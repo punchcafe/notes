@@ -86,7 +86,7 @@ def validBraces(braces)
   end 
 ```
 
-##String incrementer
+## String incrementer
 
 Your job is to write a function which increments a string, to create a new string. If the string already ends with a number, the number should be incremented by 1. If the string does not end with a number the number 1 should be appended to the new string.
 
@@ -155,3 +155,55 @@ def queue_time(customers, n)
 end
 ```
 
+## Find The Parity Outlier
+
+You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+
+#### My Solution
+
+```ruby
+def find_outlier(integers)
+even_count = 0
+integers[0..2].each{|x| even_count+=1 if x%2 == 0}
+return even_count > 1 ? integers.select{|x| x%2 ==1}[0] : integers.select{|x| x%2 !=1}[0]
+end 
+```
+
+This one wasn't very well refactored, but I was testing to see how fast I could do it more than anything.
+
+## Human Readable Duration Format
+Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.
+
+The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds.
+
+It is much easier to understand with an example:
+```
+format_duration(62)    # returns "1 minute and 2 seconds"
+format_duration(3662)  # returns "1 hour, 1 minute and 2 seconds"
+```
+
+#### My Solution
+```ruby
+def format_duration(seconds)
+  return "now" if seconds == 0
+  conversion = {year: 31536000, day: 86400, hour: 3600, minute: 60, second: 1}
+  time = {year: 0, day: 0, hour: 0, minute: 0, second: 0}
+  time.collect{|unit,val|
+    time[unit] = seconds / conversion[unit]
+    seconds = seconds % conversion[unit]
+    }
+  time.reject!{|unit,val| val==0}
+  string_array = []
+  time.each{|unit,val|
+  string_array << val.to_s+" #{unit.to_s}"+(val>1 ? "s" : "")
+  }
+  return string_array[0...-1].join(", ")+ " and "+string_array[-1] if string_array.length > 1
+  return string_array[0]
+end
+```
+
+
+
+4 kyu Permutations
+
+recursive
