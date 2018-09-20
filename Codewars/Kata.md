@@ -204,6 +204,42 @@ end
 
 
 
-4 kyu Permutations
+## Permutations
 
-recursive
+In this kata you have to create all permutations of an input string and remove duplicates, if present. This means, you have to shuffle all letters from the input in all possible orders.
+
+Examples:
+```ruby
+permutations('a'); # ['a']
+permutations('ab'); # ['ab', 'ba']
+permutations('aabb'); # ['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa']
+The order of the permutations doesn't matter.
+```
+
+#### My Solution
+I wanted to try and solve this problem using a recursive function. Perhaps (without any elements of dynamic programming), an iterative approach would have made more efficient code, but I wanted the practice.
+
+when looping through `x.each_character` I had the issue of the `insert` method mutating the list as I went through it. Initially I tried to get around this by making a clone with `temp_array = x`, but discovered that this just creates an object `temp_array` which simply points to `x`. Thus any attempt to use `temp_array` still modified `x`. This was an interesting note since it showed me that Ruby assignments of variables don't inherently assign the variable to a copy of whatever it's assigned to. To get around this I used `x*1` to generate a clone, meaning I could mutate without worrying about disrupting the iterations.
+```ruby
+def permutations(string)
+  if string.length == 1
+    return [string]
+  elsif string.length == 2
+    return do_it([string[0]],string[1])
+  else
+    return do_it(permutations(string[0...-1]),string[-1])
+  end
+end
+
+def do_it(my_array,new_char)
+  return_array = []
+  my_array.each{|x| 
+    x.each_char.with_index{|char,ind| 
+      return_array << (x*1).insert(ind,new_char)
+    }
+    return_array << (x*1 << new_char)
+  }
+  return_array.uniq!
+  return return_array
+end
+```
