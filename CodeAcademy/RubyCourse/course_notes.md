@@ -171,6 +171,7 @@ array.each{|x| <body> } #returns an array with each element(x) acted on.
 array.each.with_index{|x,ind| <body>} #as above, but also gives the index. 
 array.select{bool} #returns array with only true bool values
 array.sort! #remembering, ! overwrites
+array.join()
 array.push #appends object to the end of array
 array.include? arg #checks if arg is in array
 array.reject{|x| boolean} #returns array withwout rejected values
