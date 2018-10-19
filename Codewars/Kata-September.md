@@ -517,20 +517,6 @@ def doubles(k_max,n_max)
 end
 ```
 
-
-todo:
-
-Pick peaks
-
-Decode the Morse code, advanced
-
-Ten-Pin Bowling
-
-Binary multiple of 3
-
-Make a spiral
-
-
 ### Instant Runoff Voting
 
 >Your task is to implement a function that calculates an election winner from a list of voter selections using an Instant Runoff Voting algorithm. If you haven't heard of IRV, here's a basic overview (slightly altered for this kata):

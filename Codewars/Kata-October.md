@@ -94,3 +94,189 @@ $extended_num = {
   return polarity + output
 end
 ```
+
+
+```ruby
+class User
+  attr_accessor :progress
+  attr_accessor :rank
+
+def initialize()
+  @rank = -8
+  @progress = 0
+end
+  
+def over_0?(x,y)
+  return true if ((x>0 and y<0) or (y>0 and x<0))
+  return false
+end
+
+def relative_exp(act_rank)
+##fix over_0 case returns
+  if over_0?(act_rank,@rank)
+    return 10*(act_rank-@rank-1)**2 if act_rank-@rank > 0
+    return 1 if act_rank-@rank == 0
+    return 0 if act_rank-@rank < 0 
+  else
+    return 10*(act_rank-@rank)**2 if act_rank-@rank > 0 
+    return 3 if act_rank-@rank == 0
+    return 1 if act_rank-@rank == -1
+    return 0 if act_rank-@rank < -1 
+  end
+end
+
+def valid_act(act_rank)
+ raise "Out of bounds" if act_rank > 8 or act_rank < -8 or act_rank == 0
+end
+def inc_progress(act_rank)
+puts "rank #{@rank}"
+puts "Act_rank#{act_rank}"
+puts "progress: #{@progress}"
+  valid_act(act_rank)
+  if @rank < 8
+  puts "relative exp"
+  puts relative_exp(act_rank)
+    exp = relative_exp(act_rank) + @progress
+    (exp/100).times{rank_up} if @rank < 8
+    @progress = exp % 100 if @rank < 8
+  end
+puts "progress after: #{@progress}"
+puts "rank after: #{@rank}"
+end
+
+
+def rank_up()
+if @rank != 8
+  @rank += @rank != -1 ? 1 : 2
+  @progress = 0
+end
+end
+
+
+end
+```
+
+
+```ruby
+class User
+  attr_accessor :progress
+  attr_accessor :rank
+
+def initialize()
+  @rank = -8
+  @progress = 0
+end
+  
+def over_0?(x,y)
+  return true if (x>0 and y<0) or (y<0 and x>0) 
+end
+
+def relative_exp(act_rank)
+  if over_0?(act_rank,@rank)
+    return 10*(act_rank-@rank-1)**2 if act_rank-@rank > 0
+    return 1 if act_rank-@rank == 0
+    return 0 if act_rank-@rank < 0 
+  else
+    return 10*(act_rank-@rank)**2 if act_rank-@rank > 0 
+    return 3 if act_rank-@rank == 0
+    return 1 if act_rank-@rank == -1
+    return 0 if act_rank-@rank < -1 
+  end
+end
+
+def valid_act(act_rank)
+ raise "Out of bounds" if act_rank > 8 or act_rank < -8 or act_rank == 0
+end
+def inc_progress(act_rank)
+puts "rank #{@rank}"
+puts "Act_rank#{act_rank}"
+puts "progress: #{@progress}"
+  valid_act(act_rank)
+  if @rank < 8
+    exp = relative_exp(act_rank) + @progress
+    (exp/100).times{rank_up} if @rank < 8
+    @progress = exp % 100 if @rank < 8
+  end
+puts "rank #{@rank}"
+puts "Act_rank#{act_rank}"
+puts "progress: #{@progress}"
+end
+
+
+def rank_up()
+if @rank != 8
+  @rank += @rank != -1 ? 1 : 2
+  @progress = 0
+end
+end
+
+
+end
+```
+
+```ruby
+class User
+  attr_accessor :progress
+  attr_accessor :rank
+
+def initialize()
+  @rank = -8
+  @progress = 0
+end
+  
+def over_0?(x,y)
+  return true if ((x>0 and y<0) or (y>0 and x<0))
+  return false
+end
+
+def relative_exp(act_rank)
+##fix over_0 case returns
+  if over_0?(act_rank,@rank)
+    return 10*(act_rank-@rank-1)**2 if act_rank-@rank > 0
+    return 1 if act_rank-@rank + 1 == -1
+    return 0 if act_rank-@rank < -1 
+  else
+    return 10*(act_rank-@rank)**2 if act_rank-@rank > 0 
+    return 3 if act_rank-@rank == 0
+    return 1 if act_rank-@rank == -1
+    return 0 if act_rank-@rank < -1 
+  end
+end
+
+def valid_act(act_rank)
+ raise "Out of bounds" if act_rank > 8 or act_rank < -8 or act_rank == 0
+end
+def inc_progress(act_rank)
+  valid_act(act_rank)
+  if @rank < 8
+    exp = relative_exp(act_rank) + @progress
+    (exp/100).times{rank_up} if @rank < 8
+    @progress = exp % 100 if @rank < 8
+  end
+end
+
+
+def rank_up()
+if @rank != 8
+  @rank += @rank != -1 ? 1 : 2
+  @progress = 0
+end
+end
+
+
+end
+```
+
+to do
+
+Codewars style ranking system
+
+Pick peaks
+
+Decode the Morse code, advanced
+
+Ten-Pin Bowling
+
+Binary multiple of 3
+
+Make a spiral
