@@ -169,6 +169,109 @@ Use `href="#target_id"` for linking to an element with `id="target_id"` to enabl
 ```
 >In the example above, an image of a prickly pear has been turned into a link by wrapping the outside of the <img> element with an <a> element.
 
+## Tables
+
+#### Table syntax
+```html
+<table></table> <!-- Initiate a table -->
+<tr></tr> <!-- add a row (inside of the table body) -->
+<th></th> <!-- add table headings -->
+<td>data</td> <!-- add table data cell to row, (within <tr> tags) -->
+<td colspan="2"></td><!-- make a cell which spans 2 columns.--> 
+<td rowspan="2"></td><!-- make a cell which spans 2 rows.--> 
+<tbody></tbody><!-- enclose elements in the table body.
+ note: exclude headers!-->
+<thead></thead><!-- enclose elements in the table head.
+ note: this is for headers!-->
+<tfoot></tfoot><!-- enclose elements in the table footer.
+ note: this is for totals, sumamtion stuff etc.!-->
+
+
+
+
+
+```
+
+#### Table Headings
+>Table data doesn't make much sense without titles to describe what the data represents.
+To add titles to rows and columns, you can use the table heading element: `<th>`.
+The table heading element is used just like a table data element, except with a relevant title. Just like table data, a table heading must be placed within a table row.
+
+```html
+<table>
+  <tr>
+    <th></th>
+    <th scope="col">Saturday</th>
+    <th scope="col">Sunday</th>
+  </tr>
+  <tr>
+    <th scope="row">Temperature</th>
+    <td>73</td>
+    <td>81</td>
+  </tr>
+</table>
+```
+
+>What happened in the code above?
+First, a new row was added to hold the three headings: a blank heading, a Saturday heading, and a Sunday heading. The blank heading creates the extra table cell necessary to align the table headings correctly over the data they correspond to.
+In the second row, one table heading was added as a row title: Temperature.
+Note, also, the use of the scope attribute, which can take one of two values:
+row - this value makes it clear that the heading is for a row.
+col - this value makes it clear that the heading is for a column.
+
+#### Table Body
+>Over time, a table can grow to contain a lot of data and become very long. When this happens, the table can be sectioned off so that it is easier to manage.
+Long tables can be sectioned off using the table body element: `<tbody>`.
+The `<tbody>` element should contain all of the table's data, excluding the table headings (more on this in a later exercise).
+
+#### Table Header
+>In the last exercise, the table's headings were kept inside of the table's body. When a table's body is sectioned off, however, it also makes sense to section off the table's headings using the `<thead>` element.
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Morning</th>
+      <td rowspan="2">Work</td>
+      <td rowspan="3">Relax</td>
+    </tr>
+    <tr>
+     <th>Afternoon</th>
+    </tr>
+    <tr>
+      <th>Evening</th>
+      <td>Dinner</td>
+    </tr>
+  </tbody>
+</table>
+```
+#### Table Footer
+>The bottom part of a long table can also be sectioned off using the `<tfoot>` element.
+    ```html
+    <table>
+  <thead>
+<!-- Blah blah blah -->
+  </thead>
+  <tbody>
+<!-- Blah blah blah -->
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Total</th>
+      <td>$22M</td>
+      <td>$12.5M</td>
+    </tr>
+  </tfoot>
+</table>
+````
+>In the example above, the footer contains the totals of the data in the table. Footers are often used to contain sums, differences, and other data results.
 
 ## Cheat sheet
 ```html
