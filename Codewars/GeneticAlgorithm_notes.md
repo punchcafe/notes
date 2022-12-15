@@ -1,3 +1,4 @@
+```ruby
 class GeneticAlgorithm
 
   def generate length
@@ -228,3 +229,4 @@ end
 make problem generator, (with solutions)
 conversion helper function ( part of function)
 fitness function (uses solutions from problem generator)
+```
