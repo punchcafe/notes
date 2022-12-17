@@ -1,8 +1,0 @@
-# Learn CSS course notes
-### Inline Styles
->Although CSS is a different language than HTML, it's possible to write CSS code directly within HTML code using inline styles.
-
-To style an HTML element, you can add the style attribute directly to the opening tag. After you add the attribute, you can set it equal to the CSS style(s) you'd like applied to that element.
-
-<p style="color: red;">I'm learning to code!</p>
-The code in the example above demonstrates how to use inline styling. The paragraph element has a style attribute within its opening tag. Next, the style attribute is set equal to color: red;, which will set the color of the paragraph text to red within the browser.
